@@ -19,6 +19,7 @@ jobs:
           name: Install dependencies
           command: |
             composer install --ignore-platform-req=ext-gmp --ignore-platform-req=ext-zend-opcache
+            composer require --ignore-platform-req=ext-gmp --ignore-platform-req=ext-zend-opcache --dev previousnext/phpunit-finder
       - run:
           name: Run tests
           command: |
