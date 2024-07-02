@@ -24,7 +24,7 @@ jobs:
           name: Run tests
           command: |
             TESTS_TO_RUN=$(vendor/bin/phpunit-finder -- functional)
-            echo "$TESTS_TO_RUN" | circleci tests run --command="xargs -I{} -d\" \" /data/vendor/bin/phpunit {} --log-junit /data/artifacts/phpunit/phpunit-functional-$(basename {}).xml" --verbose --split-by=timings
+            echo "$TESTS_TO_RUN" | circleci tests run --command="xargs -I{} -d\" \" vendor/bin/phpunit {} --log-junit /data/artifacts/phpunit/phpunit-functional-$(basename {}).xml" --verbose --split-by=timings
 
       - store_test_results:
           path: artifacts/phpunit
