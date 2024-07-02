@@ -19,11 +19,10 @@ jobs:
           name: Install dependencies
           command: |
             composer install --ignore-platform-req=ext-gmp --ignore-platform-req=ext-zend-opcache
-            composer require --ignore-platform-req=ext-gmp --ignore-platform-req=ext-zend-opcache --dev previousnext/phpunit-finder
       - run:
           name: Run tests
           command: |
-            TESTS_TO_RUN=$(/data/vendor/bin/phpunit-finder -- functional)
+            TESTS_TO_RUN=$(vendor/bin/phpunit-finder -- functional)
             echo "$TESTS_TO_RUN" | circleci tests run --command="xargs -I{} -d\" \" /data/vendor/bin/phpunit {} --log-junit /data/artifacts/phpunit/phpunit-functional-$(basename {}).xml" --verbose --split-by=timings
 
       - store_test_results:
