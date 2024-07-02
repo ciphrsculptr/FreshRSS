@@ -1,6 +1,7 @@
 <?php
+
 declare(strict_types=1);
-error_reporting(E_ALL);
+error_reporting(E_ERROR | E_PARSE); // hide warnings and notices
 ini_set('display_errors', '1');
 
 const COPY_LOG_TO_SYSLOG = false;
