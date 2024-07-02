@@ -13,6 +13,7 @@ jobs:
   test:
     docker:
       - image: cimg/php:8.3.8
+    parallelism: 4
     steps:
       - checkout
       - run:
